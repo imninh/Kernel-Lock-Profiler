@@ -183,3 +183,10 @@ void            virtio_disk_intr(void);
 
 // number of elements in fixed-size array
 #define NELEM(x) (sizeof(x)/sizeof((x)[0]))
+
+// lockstat.c
+void            lockstat_init(void);
+void            lockstat_record_acquire(struct spinlock*, uint64);
+void            lockstat_record_release(struct spinlock*, uint64);
+void            lockstat_print(void);
+uint64          lockstat_copy_to_user(uint64, int);

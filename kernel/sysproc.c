@@ -107,3 +107,23 @@ sys_uptime(void)
   release(&tickslock);
   return xticks;
 }
+
+uint64
+sys_lockstat(void)
+{
+  lockstat_print();
+  return 0;
+}
+
+// THÊM syscall mới - return data
+uint64
+sys_getlockstats(void)
+{
+  uint64 addr;
+  int max_locks;
+  
+  argaddr(0, &addr);  // địa chỉ buffer trong user space
+  argint(1, &max_locks);  // số lượng locks tối đa
+  
+  return lockstat_copy_to_user(addr, max_locks);
+}
