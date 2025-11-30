@@ -108,16 +108,9 @@ sys_uptime(void)
   return xticks;
 }
 
+// THÊM syscall mới
 uint64
 sys_lockstat(void)
-{
-  lockstat_print();
-  return 0;
-}
-
-// THÊM syscall mới - return data
-uint64
-sys_getlockstats(void)
 {
   uint64 addr;
   int max_locks;

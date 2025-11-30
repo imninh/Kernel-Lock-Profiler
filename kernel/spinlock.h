@@ -5,5 +5,6 @@ struct spinlock {
 
   // For debugging:
   char *name;        // Name of lock.
+  int no_track;      // If set, this lock should not be tracked by lockstat
   struct cpu *cpu;   // The cpu holding the lock.
 };

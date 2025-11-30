@@ -27,8 +27,7 @@ main(int argc, char *argv[])
     wait(0);
   }
   
-  printf("\n=== Lock Statistics ===\n");
-  lockstat(); // Gọi syscall để in statistics
+  printf("\nTest complete ! Run 'lockstat' to see the statistics.\n");
   
   exit(0);
 }

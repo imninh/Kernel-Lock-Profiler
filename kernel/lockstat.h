@@ -12,6 +12,9 @@ struct lock_stat {
     uint64 contention_count;   // Số lần bị contention
     uint64 total_hold_time;    // Tổng thời gian giữ lock (cycles)
     uint64 total_wait_time;    // Tổng thời gian chờ lock (cycles)
+    uint64 max_hold_time;      // Maximum hold time observed
+    uint64 max_wait_time;      // Maximum wait time observed
+    uint64 last_acquire_time;  // Timestamp of last acquire
     int enabled;
 };
 
