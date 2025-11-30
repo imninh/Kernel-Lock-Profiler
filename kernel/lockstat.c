@@ -7,20 +7,12 @@
 #include "defs.h"
 #include "lockstat.h"
 
-struct lock_stats {
-    char name[MAX_LOCK_NAME];
-    uint64 acquire_count;
-    uint64 contention_count;
-    uint64 total_hold_time;
-    uint64 total_wait_time;
-    uint64 max_hold_time;      // ← THÊM: Thời gian hold lâu nhất
-    uint64 max_wait_time;      // ← THÊM: Thời gian wait lâu nhất
-    uint64 last_acquire_time;  // ← THÊM: Lần acquire cuối
-    int enabled;
-};
+// Use the public definition from lockstat.h and expose the array used
+// internally by the kernel for tracking lock statistics.
+struct lock_stat lock_stats[MAX_LOCKS];
 int lock_count = 0;
 struct spinlock lockstat_lock;
-int lockstat_enabled = 0;  // ← THÊM: flag để enable/disable tracking
+int lockstat_enabled = 0;  // flag to enable/disable tracking
 
 // Helper function để copy string
 static void
