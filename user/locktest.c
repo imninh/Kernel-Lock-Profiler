@@ -15,15 +15,14 @@ main(int argc, char *argv[])
       for(int j = 0; j < 100; j++) {
         // Các system call này sẽ gây lock contention
         getpid();
-        // sleep(1) yêu cầu số ticks, không phải giây
-        // 1 tick ≈ 0.01 giây trong xv6
+        uptime();
       }
       exit(0);
     }
   }
   
   // Parent chờ children
-  for(int i = 0; i < 5; i++) {
+  for(int i = 0; i < 10; i++) {
     wait(0);
   }
   
